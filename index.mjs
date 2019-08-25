@@ -6,7 +6,7 @@ const connection_string =
 
 var connection = null;
 
-function insert(tablename, request_url) {
+let insert = (tablename, request_url) => {
   return get(request_url)
     .then(response => {
       return connection[tablename].insert(response.data, {
@@ -14,7 +14,7 @@ function insert(tablename, request_url) {
       });
     })
     .then(results => console.log(results));
-}
+};
 
 massive(connection_string)
   .then(db => {
